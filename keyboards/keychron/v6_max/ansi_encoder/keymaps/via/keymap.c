@@ -71,12 +71,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
-bool led_update_user(led_t led_state) {
-    /* Invert the default logic of NUM LOCK LED:
-        NUM LOCK on  --> LED off,
-        NUM LOCK off --> LED on */
-    led_state.num_lock = !led_state.num_lock;
-
-    return true;
-}
