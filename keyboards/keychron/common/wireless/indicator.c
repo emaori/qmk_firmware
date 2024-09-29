@@ -667,12 +667,6 @@ bool LED_INDICATORS_KB(void) {
 bool led_update_kb(led_t led_state) {
     bool res = led_update_user(led_state);
     if (res) {
-
-        /* Invert the default logic of NUM LOCK LED:
-            NUM LOCK on  --> LED off,
-            NUM LOCK off --> LED on */
-        led_state.num_lock = !led_state.num_lock;
-
         led_update_ports(led_state);
 
         if (!LED_DRIVER_IS_ENABLED() || (LED_DRIVER_IS_ENABLED() && LED_DRIVER_TIMEOUTED())) {
