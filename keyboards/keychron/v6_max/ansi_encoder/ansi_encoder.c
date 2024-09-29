@@ -173,14 +173,3 @@ led_config_t g_led_config = {
     }
 };
 #endif
-
-bool led_update_kb(led_t led_state) {
-    bool res = led_update_user(led_state);
-    if(res) {
-        /* Invert the default logic of NUM LOCK LED:
-           NUM LOCK on  --> LED off,
-           NUM LOCK off --> LED on */
-        writePin(LED_NUM_LOCK_PIN, !led_state.num_lock);
-    }
-    return res;
-}
